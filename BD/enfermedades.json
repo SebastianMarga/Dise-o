@@ -1,0 +1,43 @@
+[
+    {
+      "nombre": "Diabetes",
+      "descripcion": "Enfermedad crónica que afecta la forma en que el cuerpo procesa el azúcar."
+    },
+    {
+      "nombre": "Hipertensión",
+      "descripcion": "Presión arterial elevada de forma persistente."
+    },
+    {
+      "nombre": "Asma",
+      "descripcion": "Trastorno respiratorio que causa dificultad para respirar."
+    },
+    {
+      "nombre": "Cáncer",
+      "descripcion": "Grupo de enfermedades que implican el crecimiento celular anormal."
+    },
+    {
+      "nombre": "Gripe",
+      "descripcion": "Infección viral que afecta el sistema respiratorio."
+    },
+    {
+      "nombre": "Artritis",
+      "descripcion": "Inflamación de las articulaciones que causa dolor y rigidez."
+    },
+    {
+      "nombre": "Migraña",
+      "descripcion": "Dolor de cabeza intenso acompañado a veces de náuseas y sensibilidad a la luz."
+    },
+    {
+      "nombre": "COVID-19",
+      "descripcion": "Enfermedad respiratoria causada por el coronavirus SARS-CoV-2."
+    },
+    {
+      "nombre": "Anemia",
+      "descripcion": "Disminución de glóbulos rojos o hemoglobina en la sangre."
+    },
+    {
+      "nombre": "Epilepsia",
+      "descripcion": "Trastorno neurológico caracterizado por convulsiones recurrentes."
+    }
+  ]
+  

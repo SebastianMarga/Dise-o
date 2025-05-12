@@ -1,4 +1,15 @@
-function sendMessage() {
+import getAll from "./fetch.js";
+
+document.getElementById('sendBtn').addEventListener('click', sendMessage);
+document.getElementById('recordMovementBtn').addEventListener('click', recordMovement);
+document.getElementById('translateTextBtn').addEventListener('click', translateText);
+
+let enfermedades = await getAll();
+
+console.log(enfermedades);
+
+
+export function sendMessage() {
     const input = document.getElementById('input');
     const text = input.value.trim();
     if (!text) return;
@@ -12,31 +23,96 @@ function sendMessage() {
 
     const botMessage = document.createElement('div');
     botMessage.className = 'message bot';
-    botMessage.textContent = 'Procesando...';
+    if (getDescIllness(text)) {
+        botMessage.textContent = getDescIllness(text);
+    } else {
+        botMessage.textContent = 'Procesando...';
+    }
     messagesContainer.appendChild(botMessage);
 
     // Mostrar alerta si se detecta "hematuria"
     if (text.toLowerCase().includes("hematuria")) {
-      showAlert();
+        showAlert();
     }
 
     input.value = '';
     messagesContainer.scrollTop = messagesContainer.scrollHeight;
-  }
+}
 
-  function recordMovement() {
+export function recordMovement() {
     const cameraStatus = document.getElementById('cameraStatus');
     cameraStatus.style.display = 'block';
-  }
 
-  function translateText() {
-    alert("Función de traducción de texto aún no implementada.");
-  }
+    setTimeout(() => {
+        cameraStatus.style.display = 'none';
+        
+        const messagesContainer = document.getElementById('messages');
+        const botMessage = document.createElement('div');
+        botMessage.className = 'message bot';
+        botMessage.textContent = 'Traduciendo lenguaje de señas...';
+        messagesContainer.appendChild(botMessage);
 
-  function showAlert() {
+    }, 5000)
+
+}
+
+export function translateText() {
+
+    const avatar = document.getElementById("avatar");
+    const pava = document.getElementById('pava');
+    pava.style.display = 'none'
+
+    avatar.style.backgroundImage = 'url("../Vista/gitChoking.gif")';
+    setTimeout(() => {
+        avatar.style.backgroundImage = 'url("../Vista/gifAlz.gif")';
+    }, 6000);
+    setTimeout(() => {
+        avatar.style.backgroundImage = 'url("../Vista/gifMental.gif")';
+    }, 4000);
+    setTimeout(() => {
+        avatar.style.backgroundImage = 'url("../Vista/gifSoreThroat.gif")';
+    }, 2000);
+
+
+
+
+}
+
+
+
+
+
+
+
+function showAlert() {
     const alertBox = document.getElementById('alertBox');
     alertBox.style.display = 'block';
     setTimeout(() => {
-      alertBox.style.display = 'none';
+        alertBox.style.display = 'none';
     }, 5000); // Ocultar después de 5 segundos
-  }
+}
+
+function getDescIllness(texto) {
+    texto = texto.toLowerCase();
+
+    for (const enfermedad of enfermedades) {
+        if (texto.includes(enfermedad.nombre.toLowerCase())) {
+            return enfermedad.descripcion;
+        }
+    }
+
+    return false;
+}
+
+
+const video = document.getElementById('video');
+
+// Solicitar acceso a la cámara
+navigator.mediaDevices.getUserMedia({ video: true })
+    .then(stream => {
+        video.srcObject = stream;
+    })
+    .catch(error => {
+        console.error("No se pudo acceder a la cámara:", error);
+        alert("Error al acceder a la cámara. Verifica permisos.");
+    });
