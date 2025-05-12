@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Chatbot UI</title>
+  <link rel="stylesheet" href="../Vista/styles.css">
+</head>
+<body>
+  <div class="container">
+    <div class="left">
+      <div class="messages" id="messages">
+        <div class="message bot">Hola, ¿cómo puedo ayudarte hoy?</div>
+      </div>
+      <div class="input-container">
+        <input type="text" id="input" placeholder="Escribe tu mensaje..." />
+        <button onclick="sendMessage()">Enviar</button>
+        <button onclick="recordMovement()">Grabar Movimiento</button>
+        <button onclick="translateText()">Traducir Texto</button>
+      </div>
+    </div>
+
+    <div class="right">
+      <div class="avatar"><p>Avatar en Lengua de Señas</p></div>
+      <div class="camera" id="cameraArea">
+        <div id="cameraStatus">🔴 Grabando...</div>
+        <p>Cámara del Usuario</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Caja de alerta flotante -->
+  <div id="alertBox" class="alert-box">
+    Según los síntomas que padece, se recomienda consultar con especialista.
+  </div>
+
+  <script src="../Controlador/index.js"></script>
+</body>
+</html>

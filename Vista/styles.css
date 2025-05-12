@@ -1,0 +1,142 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    height: 100vh;
+    display: flex;
+  }
+
+  .container {
+    display: flex;
+    width: 100%;
+    height: 100vh;
+    border: 1px solid #ccc;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  }
+
+  .left {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    background-color: #f3f4f6;
+    border-right: 1px solid #ccc;
+    padding: 16px;
+  }
+
+  .messages {
+    flex: 1;
+    overflow-y: auto;
+    margin-bottom: 8px;
+  }
+
+  .message {
+    padding: 10px;
+    border-radius: 8px;
+    margin: 5px 0;
+    max-width: 80%;
+  }
+
+  .bot {
+    background-color: #bfdbfe;
+    text-align: left;
+  }
+
+  .user {
+    background-color: #bbf7d0;
+    text-align: right;
+    align-self: flex-end;
+  }
+
+  .input-container {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  input[type="text"] {
+    flex: 1 1 100%;
+    padding: 8px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+  }
+
+  button {
+    padding: 8px 16px;
+    border: none;
+    background-color: #3b82f6;
+    color: white;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+
+  button:hover {
+    background-color: #2563eb;
+  }
+
+  .right {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .avatar, .camera {
+    height: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1px solid #ccc;
+    font-size: 1.2rem;
+    position: relative;
+  }
+
+  .avatar {
+    background-color: #d1d5db;
+  }
+
+  .camera {
+    background-color: #9ca3af;
+    border-bottom: none;
+  }
+
+  #cameraStatus {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    color: red;
+    font-weight: bold;
+    background-color: rgba(255, 255, 255, 0.7);
+    padding: 4px 8px;
+    border-radius: 6px;
+    display: none;
+  }
+
+  #cameraArea {
+    background-image: url("   ");
+    background-position: center;
+    background-size: cover;
+  }
+
+  .alert-box {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #f87171;
+    color: white;
+    padding: 20px 30px;
+    border-radius: 12px;
+    font-size: 1.1rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    z-index: 9999;
+    display: none;
+    animation: fadeInOut 5s forwards;
+  }
+
+  @keyframes fadeInOut {
+    0%   { opacity: 0; }
+    10%  { opacity: 1; }
+    90%  { opacity: 1; }
+    100% { opacity: 0; display: none; }
+  }
