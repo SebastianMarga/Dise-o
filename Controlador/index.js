@@ -49,10 +49,19 @@ export function recordMovement() {
         const messagesContainer = document.getElementById('messages');
         const botMessage = document.createElement('div');
         botMessage.className = 'message bot';
-        botMessage.textContent = 'Traduciendo lenguaje de señas...';
+        botMessage.textContent = '(Traduciendo lenguaje de señas...)';
         messagesContainer.appendChild(botMessage);
 
     }, 5000)
+
+    setTimeout(() => {    
+        const messagesContainer = document.getElementById('messages');
+        const botMessage = document.createElement('div');
+        botMessage.className = 'message bot';
+        botMessage.textContent = 'El problema que tienes se puede deber a distintas causas como...';
+        messagesContainer.appendChild(botMessage);
+
+    }, 7000)
 
 }
 
