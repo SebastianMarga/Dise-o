@@ -45,14 +45,26 @@ function formatTime(seconds) {
   return `${min}:${sec}`;
 }
 
+<<<<<<< HEAD
 document.getElementById("recordMovementBtn").addEventListener("click", () => {
   startCountdownAndCapture();
 });
+=======
+    setTimeout(() => {
+        cameraStatus.style.display = 'none';
+        
+        const messagesContainer = document.getElementById('messages');
+        const botMessage = document.createElement('div');
+        botMessage.className = 'message bot';
+        botMessage.textContent = '(Traduciendo lenguaje de señas...)';
+        messagesContainer.appendChild(botMessage);
+>>>>>>> 4c3bb5432002e4620029dd8b78809b02472fbbf3
 
 function startCountdownAndCapture() {
   const countdownTime = 2; // segundos
   let currentTime = countdownTime;
 
+<<<<<<< HEAD
   // Crear cronómetro
   const countdown = document.createElement("div");
   countdown.id = "countdown";
@@ -147,6 +159,17 @@ function showCustomAlert(message, type = "success") {
   setTimeout(() => {
     alert.classList.remove("show");
   }, 3000);
+=======
+    setTimeout(() => {    
+        const messagesContainer = document.getElementById('messages');
+        const botMessage = document.createElement('div');
+        botMessage.className = 'message bot';
+        botMessage.textContent = 'El problema que tienes se puede deber a distintas causas como...';
+        messagesContainer.appendChild(botMessage);
+
+    }, 7000)
+
+>>>>>>> 4c3bb5432002e4620029dd8b78809b02472fbbf3
 }
 
 export function translateText() {
