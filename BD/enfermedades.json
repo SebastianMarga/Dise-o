@@ -38,6 +38,10 @@
     {
       "nombre": "Epilepsia",
       "descripcion": "Trastorno neurológico caracterizado por convulsiones recurrentes."
+    },
+    {
+      "nombre":"Fiebre",
+      "descripcion": "Temperatura corporal alta, es una respuesta natural del cuerpo a una infección o inflamación"
     }
   ]
   
