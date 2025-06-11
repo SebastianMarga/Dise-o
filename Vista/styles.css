@@ -37,6 +37,7 @@ body {
   max-width: 80%;
   width: fit-content;
   text-align: justify !important;
+  overflow-y: auto;
 }
 
 .bot {

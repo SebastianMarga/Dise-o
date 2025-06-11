@@ -1,5 +1,8 @@
 import getAll from "./fetch.js";
 
+let signs = []
+const SEND_MESSAGE = 'http://localhost:8000/predict/'
+
 document.getElementById("sendBtn").addEventListener("click", sendMessage);
 document
   .getElementById("translateTextBtn")
@@ -9,35 +12,71 @@ let enfermedades = await getAll();
 
 console.log(enfermedades);
 
-export function sendMessage() {
-  const input = document.getElementById("input");
+export async function sendMessage() {
+
+  const data = await fecthMessage()
+  console.log('Data: ', data)
+  const { user_message, system_response } = data
+
+  /* const input = document.getElementById("input");
   const text = input.value.trim();
-  if (!text) return;
+  if (!text) return; */
 
   const messagesContainer = document.getElementById("messages");
 
   const userMessage = document.createElement("div");
   userMessage.className = "message user";
-  userMessage.textContent = text;
+  userMessage.textContent = user_message;
   messagesContainer.appendChild(userMessage);
 
   const botMessage = document.createElement("div");
   botMessage.className = "message bot";
-  if (getDescIllness(text)) {
-    botMessage.textContent = getDescIllness(text);
+  if (getDescIllness(system_response)) {
+    botMessage.innerHTML = marked.parse(system_response.replace(/\n/g, '<br>'));
   } else {
     botMessage.textContent = "Procesando...";
   }
   messagesContainer.appendChild(botMessage);
 
   // Mostrar alerta si se detecta "hematuria"
-  if (text.toLowerCase().includes("hematuria")) {
+  /* if (text.toLowerCase().includes("hematuria")) {
     showAlert();
-  }
+  } */
 
   input.value = "";
+  signs = []
   messagesContainer.scrollTop = messagesContainer.scrollHeight;
 }
+
+async function fecthMessage() {
+  try {
+    const response = await fetch(SEND_MESSAGE, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ images: signs })
+    });
+
+    if (response.ok) {
+      const data = await response.json();
+      console.log("Response: ", data);
+
+      const { user_message, system_response } = data.chat_response;
+
+      return { user_message, system_response }
+    } else {
+      console.log('Error to fetch: ', response.status, await response.text());
+    }
+
+  } catch (error) {
+    console.log(`Error: ${error}`);
+    return error;
+  }
+  
+}
+
+
 
 function formatTime(seconds) {
   const min = String(Math.floor(seconds / 60)).padStart(2, "0");
@@ -97,7 +136,10 @@ function captureFrame() {
   ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
 
   const imageDataURL = canvas.toDataURL("image/png");
-  console.log("Frame capturado:", imageDataURL);
+  signs.push(imageDataURL)
+
+  console.log("Frame capturado:", signs);
+
   // Crear imagen para mostrar
   const img = document.createElement("img");
   img.src = imageDataURL;
