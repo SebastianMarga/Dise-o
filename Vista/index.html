@@ -2,14 +2,27 @@
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
-    <title>Chatbot UI</title>
+    <title>Chatbot Py</title>
     <link rel="stylesheet" href="../Vista/styles.css" />
+    <link rel="shortcut icon" href="https://freesvg.org/img/1538298822.png" type="image/x-icon" />
   </head>
   <body>
+    <nav>
+        <div class="info_btn" id="info_btn"><img src="./info.png" class="logout" alt="">+Info</div>
+        <h1>ChatBot Py</h1>
+        <img src="https://freesvg.org/img/1538298822.png" alt="Logo Py">
+        <a href="./login.html">Salir<img src="./logout.png" class="logout" alt=""></a>
+    </nav>
     <div class="container">
       <div class="left">
         <div class="messages" id="messages">
-          <div class="message bot">Hola, ¿cómo puedo ayudarte hoy?</div>
+          <div class="message_div">
+              <div class="send_info boti">
+                <img src="https://freesvg.org/img/1538298822.png" alt="Logo">
+                <span>Py</span>
+              </div> 
+              <div class="message bot">Hola, ¿cómo puedo ayudarte hoy?</div>
+          </div>
         </div>
         <div class="input-container">
           <input type="text" id="input" placeholder="Escribe tu mensaje..." />
@@ -26,6 +39,10 @@
         <div class="camera" id="cameraArea">
           <video id="video" autoplay playsinline></video>
           <p>Cámara del Usuario</p>
+          <!-- <div>
+            <img src="./button.png" alt="">
+            <span>En espera</span>
+          </div> -->
         </div>
       </div>
     </div>
@@ -37,7 +54,22 @@
     <div id="customAlert" class="custom-alert hidden">
     </div>
     
+    <!-- Información flotante -->
+    <div class="info_dep">
+        <p style=" font-weight: bold; text-align: center; margin-bottom: 10px;">Ayuda</p>
+        <p>Chatbot Py es una inteligencia capaz de responder consultas sobre salud involucrando lenguaje de señas</p>
+        <p style="font-weight: bold; text-align: center; margin: 10px 0;">Botones</p>
+        <p style="margin-bottom: 10px;"><b style="color: #0f5ad3;">1) Enviar:</b> Inserta un mensaje para que Py responda tus dudas mediante texto</p>
+        <p style="margin-bottom: 10px;"><b style="color: #0f5ad3;">2) Grabar Movimiento:</b> A través de la cámara, podrás enviar texto en lenguaje de señas que Py interpretará para devolver una respuesta</p>
+        <p style="margin-bottom: 10px;"><b style="color: #0f5ad3;">3) Traducir texto:</b> Py transformará el texto que devolvió a lenguaje de señas mediante su avatar 3D</p>
+    </div>
+
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <script src="../Controlador/index.js" type="module"></script>
-  </body>
+  
+
+</body>
+
+  
+
 </html>

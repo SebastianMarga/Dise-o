@@ -24,19 +24,63 @@ export async function sendMessage() {
 
   const messagesContainer = document.getElementById("messages");
 
-  const userMessage = document.createElement("div");
-  userMessage.className = "message user";
-  userMessage.textContent = user_message;
-  messagesContainer.appendChild(userMessage);
+// Crear mensaje del usuario
+const userDiv = document.createElement("div");
+userDiv.className = "message_div";
 
-  const botMessage = document.createElement("div");
-  botMessage.className = "message bot";
-  if (getDescIllness(system_response)) {
-    botMessage.innerHTML = marked.parse(system_response.replace(/\n/g, '<br>'));
-  } else {
-    botMessage.textContent = "Procesando...";
-  }
-  messagesContainer.appendChild(botMessage);
+// Contenedor de información del usuario
+const userInfo = document.createElement("div");
+userInfo.className = "send_info useri"; // puedes ajustar la clase si necesitas estilos distintos
+
+const userImg = document.createElement("img");
+userImg.src = "https://cdn-icons-png.flaticon.com/512/149/149071.png"; // ícono de usuario genérico
+userImg.alt = "User";
+
+const userName = document.createElement("span");
+userName.textContent = "(Usuario)"; // o el nombre del usuario si lo tienes
+
+userInfo.appendChild(userImg);
+userInfo.appendChild(userName);
+
+// Mensaje del usuario
+const userMessage = document.createElement("div");
+userMessage.className = "message user";
+userMessage.textContent = user_message;
+
+userDiv.appendChild(userInfo);
+userDiv.appendChild(userMessage);
+messagesContainer.appendChild(userDiv);
+
+// Crear mensaje del bot
+const botDiv = document.createElement("div");
+botDiv.className = "message_div";
+
+// Contenedor de información del bot
+const botInfo = document.createElement("div");
+botInfo.className = "send_info boti";
+
+const botImg = document.createElement("img");
+botImg.src = "https://freesvg.org/img/1538298822.png";
+botImg.alt = "Logo";
+
+const botName = document.createElement("span");
+botName.textContent = "Py";
+
+botInfo.appendChild(botImg);
+botInfo.appendChild(botName);
+
+// Mensaje del bot
+const botMessage = document.createElement("div");
+botMessage.className = "message bot";
+if (getDescIllness(system_response)) {
+  botMessage.innerHTML = marked.parse(system_response.replace(/\n/g, '<br>'));
+} else {
+  botMessage.textContent = "Procesando...";
+}
+
+botDiv.appendChild(botInfo);
+botDiv.appendChild(botMessage);
+messagesContainer.appendChild(botDiv);
 
   // Mostrar alerta si se detecta "hematuria"
   /* if (text.toLowerCase().includes("hematuria")) {
@@ -244,3 +288,21 @@ navigator.mediaDevices
   .catch((error) => {
     console.error("No se pudo acceder a la cámara:", error);
   });
+
+
+
+//Desplegar ayuda
+const divDep = document.querySelector(".info_dep");
+const divInfo = document.getElementById("info_btn");
+
+const desplegarAyuda = () => {
+  if (divDep.style.display === "block") {
+    divInfo.className = "info_btn"
+    divDep.style.display = "none";
+  } else {
+    divInfo.className = "info_btn verde"
+    divDep.style.display = "block";
+  }
+};
+
+divInfo.addEventListener("click", desplegarAyuda);
